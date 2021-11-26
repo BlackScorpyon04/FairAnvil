@@ -6,7 +6,12 @@ authors: [ Scorp ]
 description: Anvils use experience points not levels
 
 commands:
-  toggle:
-    description: Toggle fair anvil
+  fairanvils:
+    description: allows you to toggle fairanvils
     usage: /<command>
     permission: fairanvil.toggle
+
+permissions:
+  fairanvil.toggle:
+    description: allows you to use fairanvil command
+    default: op

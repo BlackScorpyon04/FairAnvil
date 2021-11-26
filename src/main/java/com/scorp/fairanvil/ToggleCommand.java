@@ -4,6 +4,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import java.util.Locale;
+
 public class ToggleCommand implements CommandExecutor {
 
     FairAnvil plugin;
@@ -15,7 +17,14 @@ public class ToggleCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender.hasPermission("fairanvils.toggle")){
-            plugin.toggled = !plugin.toggled;
+            if (args[0].toLowerCase().equals("toggle")){
+                plugin.toggled = !plugin.toggled;
+                if (plugin.toggled){
+                    sender.sendMessage("FairAnvils enabled");
+                }else{
+                    sender.sendMessage("FairAnvils disabled");
+                }
+            }
         }
         return true;
     }

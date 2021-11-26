@@ -26,21 +26,23 @@ public final class FairAnvil extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        this.getCommand("toggle").setExecutor(new ToggleCommand(this));
+        this.getCommand("fairanvils").setExecutor(new ToggleCommand(this));
         getServer().getPluginManager().registerEvents(this, this);
     }
 
     @EventHandler
     public void InventoryClick (InventoryClickEvent e) {
         if (e.getWhoClicked() instanceof Player){
-            Player player = (Player) e.getWhoClicked();
+            if (toggled){
+                Player player = (Player) e.getWhoClicked();
 
-            if (e.getInventory().getType() == InventoryType.ANVIL){
-                AnvilInventory anvil = (AnvilInventory) e.getInventory();
-                InventoryType.SlotType slotType = e.getSlotType();
-                if (slotType == InventoryType.SlotType.RESULT){
-                    player.setLevel(player.getLevel() + anvil.getRepairCost());
-                    Experience.changeExp(player, -Experience.getExpFromLevel(anvil.getRepairCost()));
+                if (e.getInventory().getType() == InventoryType.ANVIL){
+                    AnvilInventory anvil = (AnvilInventory) e.getInventory();
+                    InventoryType.SlotType slotType = e.getSlotType();
+                    if (slotType == InventoryType.SlotType.RESULT){
+                        player.setLevel(player.getLevel() + anvil.getRepairCost());
+                        Experience.changeExp(player, -Experience.getExpFromLevel(anvil.getRepairCost()));
+                    }
                 }
             }
         }
