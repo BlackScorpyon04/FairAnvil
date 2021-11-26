@@ -1,0 +1,12 @@
+name: FairAnvil
+version: '${project.version}'
+main: com.scorp.fairanvil.FairAnvil
+api-version: 1.17
+authors: [ Scorp ]
+description: Anvils use experience points not levels
+
+commands:
+  toggle:
+    description: Toggle fair anvil
+    usage: /<command>
+    permission: fairanvil.toggle
