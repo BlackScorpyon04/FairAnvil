@@ -9,9 +9,9 @@ commands:
   fairanvils:
     description: allows you to toggle fairanvils
     usage: /<command>
-    permission: fairanvil.toggle
+    permission: fairanvils.toggle
 
 permissions:
-  fairanvil.toggle:
+  fairanvils.toggle:
     description: allows you to use fairanvil command
     default: op
